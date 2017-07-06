@@ -4,9 +4,7 @@ COMMAND=$1
 DIRECTORY=$2
 
 function run() {
-	docker run -it --rm \
-		--name "${DIRECTORY}-standalone" \
-		"tmp_${DIRECTORY}"
+	./$DIRECTORY/run.sh
 }
 
 function build() {
