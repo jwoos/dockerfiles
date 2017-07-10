@@ -2,21 +2,23 @@
 
 COMMAND=$1
 DIRECTORY=$2
+DIRECTORY_DASH=$(echo $DIRECTORY | sed 's/\//-/g')
+DIRECTORY_UNDERSCORE=$(echo $DIRECTORY | sed 's/\//_/g')
 
 function run() {
 	./$DIRECTORY/run.sh
 }
 
 function build() {
-	docker build "${DIRECTORY}" -t "tmp_${DIRECTORY}"
+	docker build "${DIRECTORY}" -t "tmp_${DIRECTORY_UNDERSCORE}"
 }
 
 function attach() {
-	docker exec -it $(docker ps -q -f name="${DIRECTORY}-standalone") bash
+	docker exec -it $(docker ps -q -f name="${DIRECTORY_DASH}-standalone") bash
 }
 
 function _kill() {
-	docker kill "${DIRECTORY}-standalone"
+	docker kill "${DIRECTORY_DASH}-standalone"
 }
 
 if [[ -z $COMMAND ]]; then
