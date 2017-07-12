@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 docker run -it --rm \
-	--name mysql-standalone \
+	--name redis-standalone \
 	-p 6379:6379 \
-	tmp_mysql
+	tmp_redis
