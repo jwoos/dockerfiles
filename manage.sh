@@ -10,7 +10,7 @@ function run() {
 }
 
 function build() {
-	docker build "${DIRECTORY}" -t "tmp_${DIRECTORY_UNDERSCORE}"
+	docker build "${DIRECTORY}" -t "tmp_${DIRECTORY_DASH}"
 }
 
 function attach() {
