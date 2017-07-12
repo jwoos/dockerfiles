@@ -34,6 +34,7 @@ WORKDIR /opt/app
 RUN rm -rf elasticmq-release-${ELASTICMQ_VERSION} archive
 
 COPY custom.conf .
+COPY connector.py .
 
 ENTRYPOINT /usr/bin/java -Dconfig.file=custom.conf -jar /opt/app/elasticmq-server-assembly-${ELASTICMQ_VERSION}.jar
 CMD ["-help"]
