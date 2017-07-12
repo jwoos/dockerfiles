@@ -2,5 +2,5 @@
 
 docker run -it --rm \
 	--name mysql-standalone \
-	-p 3306:3306 \
+	-p 6379:6379 \
 	tmp_mysql
