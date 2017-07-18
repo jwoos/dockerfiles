@@ -2,6 +2,7 @@
 
 COMMAND=$1
 DIRECTORY=$2
+CACHE="${3}:-true"
 DIRECTORY_DASH=$(echo $DIRECTORY | sed 's/\//-/g')
 DIRECTORY_UNDERSCORE=$(echo $DIRECTORY | sed 's/\//_/g')
 
@@ -10,7 +11,12 @@ function run() {
 }
 
 function build() {
-	docker build "${DIRECTORY}" -t "tmp_${DIRECTORY_DASH}"
+	local ARGS=''
+	if [[ -z $CACHE || $CACHE == 'false' ]]; then
+		ARGS='--no-cache'
+	fi
+
+	docker build "${DIRECTORY}" -t "tmp_${DIRECTORY_DASH}" $ARGS
 }
 
 function attach() {
