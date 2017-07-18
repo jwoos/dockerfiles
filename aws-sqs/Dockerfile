@@ -2,7 +2,11 @@ FROM openjdk:8
 
 EXPOSE 9324
 
-RUN mkdir -p /opt/app
+RUN apt-get update && \
+	apt-get install -y bash && \
+	apt-get upgrade -y && \
+	rm -rf /var/lib/apt/lists/*
+
 RUN mkdir -p /opt/app/archive
 WORKDIR /opt/app
 
