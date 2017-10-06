@@ -1,4 +1,4 @@
-FROM golang:1.9
+FROM golang:1.9.1-alphine3.6
 
 EXPOSE 9292
 

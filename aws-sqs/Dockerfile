@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:9-slim
 
 EXPOSE 9324
 

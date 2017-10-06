@@ -1,5 +1,5 @@
 # https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html
-FROM openjdk:8
+FROM openjdk:9-slim
 
 EXPOSE 8000
 
