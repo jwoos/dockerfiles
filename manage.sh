@@ -1,10 +1,30 @@
 #!/usr/bin/env bash
 
+# colors
+COLOR_RED='\e[1;31m'
+COLOR_BLUE='\e[1;34m'
+COLOR_CYAN='\e[1;36m'
+COLOR_GREEN='\e[1;32m'
+COLOR_YELLOW='\e[1;33m'
+COLOR_NC='\e[0m'
+
 COMMAND=$1
 DIRECTORY=$2
-CACHE="${3}:-true"
+CACHE=${3:-true}
 DIRECTORY_DASH=$(echo $DIRECTORY | sed 's/\//-/g')
 DIRECTORY_UNDERSCORE=$(echo $DIRECTORY | sed 's/\//_/g')
+
+function logOkay() {
+	printf "${COLOR_GREEN}$@${COLOR_NC}\n"
+}
+
+function logWarning() {
+	printf "${COLOR_YELLOW}$@${COLOR_NC}\n"
+}
+
+function logError() {
+	printf "${COLOR_RED}$@${COLOR_NC}\n"
+}
 
 function run() {
 	./$DIRECTORY/run.sh
@@ -28,12 +48,12 @@ function _kill() {
 }
 
 if [[ -z $COMMAND ]]; then
-	echo 'You must specify a command! [run | build | attach]'
+	logError 'You must specify a command! [run | build | attach]'
 	exit 1
 fi
 
 if [[ -z $DIRECTORY ]]; then
-	echo 'You must specify a directory!'
+	logError 'You must specify a directory!'
 	exit 1
 fi
 
@@ -46,6 +66,6 @@ elif [[ $COMMAND == 'attach' ]]; then
 elif [[ $COMMAND == 'kill' ]]; then
 	_kill
 else
-	echo 'Invalid command'
+	logError 'Invalid command'
 	exit 1
 fi
