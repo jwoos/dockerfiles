@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 # colors
 COLOR_RED='\e[1;31m'
 COLOR_BLUE='\e[1;34m'
