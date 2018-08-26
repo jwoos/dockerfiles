@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 docker run -it --rm \
-	--name xelatex-standalone \
-	-p 3306:3306 \
-	tmp_xelatex
+	--name latex-standalone \
+	--volume $(pwd):/opt \
+	tmp_latex
