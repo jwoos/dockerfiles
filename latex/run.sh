@@ -2,5 +2,5 @@
 
 docker run -it --rm \
 	--name latex-standalone \
-	--volume $(pwd):/opt \
+	--volume "$(pwd):/opt" \
 	tmp_latex
